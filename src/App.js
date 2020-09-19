@@ -1,17 +1,9 @@
 import React from "react";
 import { Switch, Route, /*Link*/ } from "react-router-dom";
 import "./App.css";
-
+import Header from "./components/header/header.component";
 import HomePage from "./pages/homepage/homepage.component";
 import ShopPage from "./pages/shop/shop.component";
-
-// const HatsPage = (props) => {
-//   return (
-//     <div>
-//       <h1>Hats Page</h1>
-//     </div>
-//   );
-// };
 
 // const HomePage = (props) => {
 //   console.log(props)
@@ -46,6 +38,7 @@ import ShopPage from "./pages/shop/shop.component";
 function App() {
   return (
     <div>
+      <Header />
       <Switch>  {/* It says that as long as one route matches it renders it */}
         <Route exact path="/" component={HomePage} />  {/* exact means show this page if and only if the url is exactly / */}
         <Route exact path="/shop" component={ShopPage} />
