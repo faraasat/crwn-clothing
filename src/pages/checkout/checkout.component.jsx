@@ -8,41 +8,45 @@ import {
   selectCartItems,
   selectCartTotal,
 } from "../../redux/cart/cart.selectors";
-import "./checkout.style.scss";
+import {
+  CheckoutHeader,
+  CheckoutContainer,
+  CheckoutHeaderBlock, CheckoutTotal, CheckoutWarning
+} from "./checkout.styles";
 
 const CheckoutPage = ({ cartItems, total }) => {
   return (
-    <div className="checkout-page">
-      <div className="checkout-header">
-        <div className="header-block">
+    <CheckoutContainer>
+      <CheckoutHeader>
+        <CheckoutHeaderBlock>
           <span>Product</span>
-        </div>
-        <div className="header-block">
+        </CheckoutHeaderBlock>
+        <CheckoutHeaderBlock>
           <span>Description</span>
-        </div>
-        <div className="header-block">
+        </CheckoutHeaderBlock>
+        <CheckoutHeaderBlock>
           <span>Quantity</span>
-        </div>
-        <div className="header-block">
+        </CheckoutHeaderBlock>
+        <CheckoutHeaderBlock>
           <span>Price</span>
-        </div>
-        <div className="header-block">
+        </CheckoutHeaderBlock>
+        <CheckoutHeaderBlock>
           <span>Remove</span>
-        </div>
-      </div>
+        </CheckoutHeaderBlock>
+      </CheckoutHeader>
       {cartItems.map((cartItem) => (
         <CheckoutItem key={cartItem.id} cartItem={cartItem} />
       ))}
-      <div className="total">
+      <CheckoutTotal>
         <span>TOTAL: ${total}</span>
-      </div>
-      <div className='test-warning'>
+      </CheckoutTotal>
+      <CheckoutWarning>
         *Please Use The Following Test Credit Card For Payments*
         <br />
         4242 4242 4242 4242 - Exp: 01/22 - CVV: 123
-      </div>
+      </CheckoutWarning>
       <StripeCheckoutButton price={total} />
-    </div>
+    </CheckoutContainer>
   );
 };
 

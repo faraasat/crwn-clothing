@@ -2,7 +2,7 @@ import React from "react";
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
 import { auth, createUserProfileDocument } from "../../firebase/firebase.utils";
-import "./sign-up.style.scss";
+import { SignUpContainer } from "./sign-up.styles";
 
 class SignUp extends React.Component {
   constructor() {
@@ -40,15 +40,15 @@ class SignUp extends React.Component {
     }
   };
 
-  handleChange = event => {
-      const { name, value } = event.target;
-      this.setState({[name]: value})
-  }
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  };
 
   render() {
     const { displayName, email, password, confirmPassword } = this.state;
     return (
-      <div className="sign-up">
+      <SignUpContainer>
         <h2 className="title">I Do Not Have An Account</h2>
         <span>Sign Up with Your Email and Password</span>
         <form className="sign-up-form" onSubmit={this.handleSubmit}>
@@ -90,7 +90,7 @@ class SignUp extends React.Component {
 
           <CustomButton type="submit">Sign Up</CustomButton>
         </form>
-      </div>
+      </SignUpContainer>
     );
   }
 }
