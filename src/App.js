@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Switch, Route, Redirect /*Link*/ } from "react-router-dom";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
@@ -42,46 +42,43 @@ import { checkUserSession } from "./redux/user/user.actions";
 //   );
 // };
 
-class App extends React.Component {
-  unsubscribeFromAuth = null;
+const App = ({ checkUserSession, currentUser }) => {
+  // unsubscribeFromAuth = null;
 
-  componentDidMount() {
-    const { checkUserSession } = this.props;
+  useEffect(() => {
     checkUserSession();
-  }
+  }, [checkUserSession]);
 
-  componentWillUnmount() {
-    /* componentWillUnmount() is invoked immediately before a component is unmounted and destroyed. Perform any necessary cleanup in this method, such as invalidating timers, canceling network requests, or cleaning up any subscriptions that were created in */
-    this.unsubscribeFromAuth();
-  }
+  // componentDidMount() {
+  //   checkUserSession();
+  // }
 
-  render() {
-    return (
-      <div>
-        <Header />
-        <Switch>
-          {/* It says that as long as one route matches it renders first path which matches it and do  not look for any other matches, it also allows for nested routes to work properly */}
-          <Route exact path="/" component={HomePage} />{" "}
-          {/* exact means show this page if and only if the url is exactly / */}
-          <Route path="/shop" component={ShopPage} />
-          <Route exact path="/checkout" component={CheckoutPage} />
-          <Route
-            exact
-            path="/signin"
-            render={() =>
-              this.props.currentUser ? (
-                <Redirect to="/" />
-              ) : (
-                <SignInAndSignUpPage />
-              )
-            }
-          />
-          {/* <Route exact path="/topic/:topicId" component={TopicDetail} />  : means that we can put here dynamic path */}
-        </Switch>
-      </div>
-    );
-  }
-}
+  // componentWillUnmount() {
+  //   /* componentWillUnmount() is invoked immediately before a component is unmounted and destroyed. Perform any necessary cleanup in this method, such as invalidating timers, canceling network requests, or cleaning up any subscriptions that were created in */
+  //   this.unsubscribeFromAuth();
+  // }
+
+  return (
+    <div>
+      <Header />
+      <Switch>
+        {/* It says that as long as one route matches it renders first path which matches it and do  not look for any other matches, it also allows for nested routes to work properly */}
+        <Route exact path="/" component={HomePage} />{" "}
+        {/* exact means show this page if and only if the url is exactly / */}
+        <Route path="/shop" component={ShopPage} />
+        <Route exact path="/checkout" component={CheckoutPage} />
+        <Route
+          exact
+          path="/signin"
+          render={() =>
+            currentUser ? <Redirect to="/" /> : <SignInAndSignUpPage />
+          }
+        />
+        {/* <Route exact path="/topic/:topicId" component={TopicDetail} />  : means that we can put here dynamic path */}
+      </Switch>
+    </div>
+  );
+};
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
