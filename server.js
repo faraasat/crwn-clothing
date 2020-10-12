@@ -2,14 +2,16 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const path = require("path");
-const { response } = require("express");
+const compression = require("compression");
 
 if (process.env.NODE_ENV !== "production") require("dotenv").config();
 
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY); // This gives us a function in which we directly pass the secret
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY); // This gives us a function in which we directly pass the secret
 
 app = express();
 const port = process.env.PORT || 5000;
+
+app.use(compression());
 app.use(bodyParser.json()); // It tells the express to any comming request to convert it into a json
 app.use(bodyParser.urlencoded({ extended: true })); // It ensures that url do not containes spaces and symbols
 app.use(cors()); // it stands for cross origin and it allows us to send data properly

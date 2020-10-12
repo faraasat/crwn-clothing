@@ -1,6 +1,6 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
-export const EmptyMessage = css`
+export const EmptyMessage = styled.div`
   font-size: 18px;
   margin: 15px auto;
 `;

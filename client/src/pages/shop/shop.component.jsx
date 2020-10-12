@@ -1,13 +1,22 @@
-import React, { useEffect } from "react";
+import React, { lazy, Suspense, useEffect } from "react";
 import { Route } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchCollectionsStart } from "../../redux/shop/shop.actions";
-import CollectionsOverviewContainer from "../../components/collections-overview/collection-overview.container";
-import CollectionsPageContainer from "../../pages/collection/collection.container";
-import { selectIsCollectionFetching, selectIsCollectionLoaded } from "../../redux/shop/shop.selectors";
+import {
+  selectIsCollectionFetching,
+  selectIsCollectionLoaded,
+} from "../../redux/shop/shop.selectors";
 import { createStructuredSelector } from "reselect";
+import Spinner from "../../components/spinner/spinner.component";
 
-const ShopPage = ({fetchCollectionsStart, match}) => {
+const CollectionsOverviewContainer = lazy(() =>
+  import("../../components/collections-overview/collection-overview.container")
+);
+const CollectionsPageContainer = lazy(() =>
+  import("../../pages/collection/collection.container")
+);
+
+const ShopPage = ({ fetchCollectionsStart, match }) => {
   // componentDidMount() {
   //   fetchCollectionsStart();
   // }
@@ -20,15 +29,17 @@ const ShopPage = ({fetchCollectionsStart, match}) => {
   // Since we have used route in app.js so it passes the match from there and match provide current path. It also passes location and history
   return (
     <div className="shop-page">
-      <Route
-        exact
-        path={`${match.path}`}
-        component={CollectionsOverviewContainer}
-      />
-      <Route
-        path={`${match.path}/:collectionId`}
-        component={CollectionsPageContainer}
-      />
+      <Suspense fallback={<Spinner />}>
+        <Route
+          exact
+          path={`${match.path}`}
+          component={CollectionsOverviewContainer}
+        />
+        <Route
+          path={`${match.path}/:collectionId`}
+          component={CollectionsPageContainer}
+        />
+      </Suspense>
     </div>
   );
 };

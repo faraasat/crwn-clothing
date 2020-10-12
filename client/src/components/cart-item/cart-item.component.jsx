@@ -15,4 +15,4 @@ const CartItem = ({ item: { imageUrl, price, name, quantity } }) => {
   );
 };
 
-export default CartItem;
+export default React.memo(CartItem);  // React.memo() is used for memorizing the component and it do not allow rendering the component until the value is changed

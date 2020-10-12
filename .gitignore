@@ -8,7 +8,6 @@ client/node_modules
 
 # testing
 /coverage
-client/coverage
 
 # production
 /build
@@ -20,16 +19,7 @@ client/coverage
 .env.test.local
 .env.production.local
 .env
-client/.DS_Store
-client/.env.local
-client/.env.development.local
-client/.env.test.local
-client/.env.production.local
-client/.env
 
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-client/npm-debug.log*
-client/yarn-debug.log*
-client/yarn-error.log*
