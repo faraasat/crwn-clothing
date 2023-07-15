@@ -1,4 +1,4 @@
-# Bulky Books Website.
+# CRWN Clothing.
 
 #### CRWN Clothing is a basic clothing website built using React, Express, Firebase, Node.js, and Stripe integration.
 
@@ -18,7 +18,7 @@ CRWN Clothing is a full-stack web application that allows users to browse and pu
 
 ### ⚙ Dockerized Execution:
 
-To run project using Docker run the following commands:
+To run the project using Docker run the following commands:
 
 For Development:
 
@@ -36,7 +36,7 @@ For Production:
 
 ### 🤹‍♂️ Skills Utilized:
 
-![Visual Studio](https://img.shields.io/badge/-Visual%20Studio-333333?style=for-the-badge&logo=visual-studio)&nbsp;&nbsp;&nbsp;&nbsp;
+![Visual Studio Code](https://img.shields.io/badge/-Visual%20Studio-333333?style=for-the-badge&logo=visual-studio-code)&nbsp;&nbsp;&nbsp;&nbsp;
 ![HTML](https://img.shields.io/badge/-HTML-333333?style=for-the-badge&logo=Html5)&nbsp;&nbsp;&nbsp;&nbsp;
 ![CSS](https://img.shields.io/badge/-CSS-333333?style=for-the-badge&logo=CSS3)&nbsp;&nbsp;&nbsp;&nbsp;
 ![React](https://img.shields.io/badge/-React-333333?style=for-the-badge&logo=react)&nbsp;&nbsp;&nbsp;&nbsp;
@@ -63,7 +63,7 @@ We would like to acknowledge the following contributor for their valuable contri
 
 ### 📷 Project UI:
 
-Take a glimpse into the captivating world of Natours Tour Static Website:
+Take a glimpse into the Project:
 
 <p align="center">
   <a href="https://crwn-clothing-web-demo.vercel.app/">
